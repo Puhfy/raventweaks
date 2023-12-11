@@ -247,7 +247,7 @@ public class HUD extends Module {
      */
 
     static class EditHudPositionScreen extends GuiScreen {
-        final String hudTextExample = "This is an-Example-HUD";
+        final String hudTextExample = "Drag Me Omg";
         GuiButton resetPosButton;
         boolean mouseDown;
         int textBoxStartX;

@@ -131,7 +131,30 @@ public class ClickGuiModule extends Module {
 
     public enum Preset {
         Vape(true, false, true, true, in -> 0xFFFFFFFE, in -> 0x99808080, in -> 0x99808080, in -> -12876693, in -> -12876693, in -> 0xFFFFFFFE, in -> 0xFF000000, in -> 0xFF000000, in -> 0xFFFFFFFE, in -> 0x99808080, true, true, false, in -> -12876693, in -> -12876693, in -> Utils.Client.otherAstolfoColorsDraw(in, 10)),
-        B4(false,
+        B4(
+            false,
+            false,
+            false,
+            true,
+            in -> 0xFFFFFFFE, // categoryNameRGB
+            in -> 0x32000000, // settingBackgroundRGB
+            in -> 0x32000000, // categoryBackgroundRGB
+            in -> 0xFF189AFF, // enabledTopRGB
+            in -> 0xFF189AFF, // enabledBottomRGB
+            in -> 0xFF189AFF, // enabledTextRGB
+            in -> 0xFFFFFFFE, // disabledTopRGB
+            in -> 0xFFFFFFFE, // disabledBottomRGB
+            in -> 0xFFFFFFFE, // disabledTextRGB
+            in -> 0x32000000, // backgroundRGB
+            true,
+            true,
+            true,
+            in -> 0xFFFFFFFE, // categoryNameRGB
+            in -> Utils.Client.rainbowDraw(2L, 10L), // categoryOutlineColor
+            in -> Utils.Client.rainbowDraw(2L, 10L) // categoryOutlineColor2
+        ),
+        Puhfy(
+                false,
                 false,
                 false,
                 true,
@@ -149,10 +172,31 @@ public class ClickGuiModule extends Module {
                 true,
                 true,
                 in -> 0xFFFFFFFE, // categoryNameRGB
-                in -> Utils.Client.rainbowDraw(2L, 10L), // categoryOutlineColor
-                in -> Utils.Client.rainbowDraw(2L, 10L) // categoryOutlineColor2
+                in -> Utils.Client.drawColor(0, 0, 0), // categoryOutlineColor
+                in -> Utils.Client.drawColor(52, 52, 52) // categoryOutlineColor2
         ),
-        PlusPlus(true, false, true, true, in -> 0xFFFFFFFE, in -> -15001318, in -> -15001318, in -> Utils.Client.rainbowDraw(2, in), in -> Utils.Client.rainbowDraw(2, in), in -> 0xFF000000, in -> 0xFF000000,in -> 0xFF000000, in -> 0xFFFFFFFE, in -> 0xFF808080, true, true, true, in -> 0xFFFFFFFE, in -> Utils.Client.astolfoColorsDraw(in, 10), in -> Utils.Client.otherAstolfoColorsDraw(in, 10));
+        PlusPlus(
+            true,
+            false,
+            true,
+            true,
+            in -> 0xFFFFFFFE,
+            in -> -15001318,
+            in -> -15001318,
+            in -> Utils.Client.rainbowDraw(2, in),
+            in -> Utils.Client.rainbowDraw(2, in),
+            in -> 0xFF000000,
+            in -> 0xFF000000,
+            in -> 0xFF000000,
+            in -> 0xFFFFFFFE,
+            in -> 0xFF808080,
+            false,
+            true,
+            true,
+            in -> 0xFFFFFFFE,
+            in -> Utils.Client.astolfoColorsDraw(in, 10),
+            in -> Utils.Client.otherAstolfoColorsDraw(in, 10)
+        );
 
 
         public boolean showGradientEnabled, showGradientDisabled, useCustomFont, categoryBackground, roundedCorners, swing, boarder;

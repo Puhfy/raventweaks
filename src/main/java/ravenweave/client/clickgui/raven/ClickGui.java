@@ -81,6 +81,8 @@ public class ClickGui extends GuiScreen {
                 this.drawVerticalLine(halfScreenWidth + 10 + w_c, quarterScreenHeight - 30, quarterScreenHeight + 43, -1);
                 this.drawVerticalLine(halfScreenWidth - 10 - w_c, quarterScreenHeight - 30, quarterScreenHeight + 38, -1);
                 this.drawVerticalLine(halfScreenWidth + 10 + w_c, quarterScreenHeight - 30, quarterScreenHeight + 38, -1);
+            } else if (ClickGuiModule.preset.getMode() == ClickGuiModule.Preset.Puhfy) {
+                this.drawCenteredString(this.fontRendererObj, "raven tweaks", halfScreenWidth + 1 - w_c, quarterScreenHeight - 25, Utils.Client.rainbowDraw(2L, 1500L));
             } else {
                 this.drawCenteredString(this.fontRendererObj, "r", (halfScreenWidth + 1) - w_c, quarterScreenHeight - 25,
                         Utils.Client.rainbowDraw(2L, 1500L));
@@ -112,7 +114,10 @@ public class ClickGui extends GuiScreen {
                 if (ClickGuiModule.preset.getMode() == ClickGuiModule.Preset.B4) {
                     this.drawHorizontalLine(halfScreenWidth - 10, halfScreenWidth - 10 + animationProggress, quarterScreenHeight - 29, -1);
                     this.drawHorizontalLine(halfScreenWidth + 10, halfScreenWidth + 10 - animationProggress, quarterScreenHeight + 42, -1);
-                } else {
+                } else if (ClickGuiModule.preset.getMode() == ClickGuiModule.Preset.Puhfy) {
+                    this.drawHorizontalLine(halfScreenWidth - 10, halfScreenWidth - 10 + animationProggress, quarterScreenHeight - 29, -1);
+                    this.drawHorizontalLine(halfScreenWidth + 10, halfScreenWidth + 10 - animationProggress, quarterScreenHeight + 42, -1);
+                }else {
                     this.drawHorizontalLine(halfScreenWidth - 10, (halfScreenWidth - 10) + animationProggress,
                             quarterScreenHeight - 29, Utils.Client.customDraw(0));
                     this.drawHorizontalLine(halfScreenWidth + 10, (halfScreenWidth + 10) - animationProggress,

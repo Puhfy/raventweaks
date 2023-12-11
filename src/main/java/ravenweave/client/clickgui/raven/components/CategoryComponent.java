@@ -26,7 +26,7 @@ public class CategoryComponent extends Component {
     public boolean visable = true;
     public int scrollheight, dragX, dragY, heightCheck, deltaHeight, prevHeight, bottomX, bottomY;
     public double theta, velo = 0.1;
-    public int aHeight = 13;
+    public int aHeight = 20;
 
     private CoolDown timer = new CoolDown(500);
     public float tPercent;
@@ -149,6 +149,15 @@ public class CategoryComponent extends Component {
                 } else if (!ClickGuiModule.isRoundedToggled())
                     Gui.drawRect(x, y, x2, y2, ClickGuiModule.getCategoryOutlineColor1());
                 else RenderUtils.drawRoundedOutline(x, y, x2, y2, 12, 2, ClickGuiModule.getCategoryOutlineColor1());
+                GlStateManager.resetColor();
+            } else if (ClickGuiModule.preset.getMode() == ClickGuiModule.Preset.Puhfy) {
+                if (isMouseOver(mouseX, mouseY)) {
+                    if (!ClickGuiModule.isRoundedToggled())
+                        Gui.drawRect(x, y, x2, y2, ClickGuiModule.getCategoryOutlineColor2());
+                    else RenderUtils.drawRoundedOutline(x, y, x2, y2, 6, 2, ClickGuiModule.getCategoryOutlineColor2());
+                } else if (!ClickGuiModule.isRoundedToggled())
+                    Gui.drawRect(x, y, x2, y2, ClickGuiModule.getCategoryOutlineColor1());
+                else RenderUtils.drawRoundedOutline(x, y, x2, y2, 6, 2, ClickGuiModule.getCategoryOutlineColor1());
                 GlStateManager.resetColor();
             } else {
                 if (isMouseOver(mouseX, mouseY)) {

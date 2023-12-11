@@ -226,7 +226,7 @@ public class Module {
         client(false, category, "Client"),
         hotkey(false, category, "Hotkey"),
         config(false, client, "Config"),
-        beta(false, category, "BETA");
+        puhfy(false, category, "Raven Tweaks");
 
         private final boolean defaultShown;
         private final ModuleCategory topCategory;

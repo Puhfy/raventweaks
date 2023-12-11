@@ -3,7 +3,6 @@ package ravenweave.client.module;
 import net.minecraft.client.gui.FontRenderer;
 import ravenweave.client.Raven;
 import ravenweave.client.module.modules.HUD;
-import ravenweave.client.module.modules.beta.*;
 import ravenweave.client.module.modules.client.ClickGuiModule;
 import ravenweave.client.module.modules.client.FakeHud;
 import ravenweave.client.module.modules.client.Targets;
@@ -113,15 +112,6 @@ public class ModuleManager {
         addModule(new Parkour());
         addModule(new BedPlates());
         addModule(new LongJump());
-
-        // BETA
-        addModule(new Refill());
-        addModule(new Radar());
-        addModule(new Scaffold());
-        addModule(new TargetHUD());
-        addModule(new AutoClutch());
-        addModule(new TellyBridge());
-        addModule(new FakeLag());
 
         initialized = true;
     }

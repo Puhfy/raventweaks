@@ -26,6 +26,7 @@ public class KillAura extends Module {
     private EntityPlayer target;
 
     public static SliderSetting reach;
+    public static SliderSetting targetRange;
     private final DoubleSliderSetting cps;
     private final TickSetting disableWhenFlying, mouseDown, onlySurvival, fixMovement;
     private final CoolDown coolDown = new CoolDown(1);
@@ -37,6 +38,7 @@ public class KillAura extends Module {
     public KillAura() {
         super("KillAura", ModuleCategory.combat);
         this.registerSetting(reach = new SliderSetting("Reach (Blocks)", 3.3, 3, 6, 0.05));
+        this.registerSetting(targetRange = new SliderSetting("Target (Blocks)", 3.3, 3, 6, 0.05));
         this.registerSetting(cps = new DoubleSliderSetting("Left CPS", 9, 13, 1, 60, 0.5));
         this.registerSetting(onlySurvival = new TickSetting("Only Survival", false));
         this.registerSetting(disableWhenFlying = new TickSetting("Disable when flying", true));
@@ -47,9 +49,11 @@ public class KillAura extends Module {
     @SubscribeEvent
     public void onGameLoop(GameLoopEvent e) {
         if (!Utils.Player.isPlayerInGame()) return;
+
         try {
             Mouse.poll();
             EntityPlayer pTarget = Targets.getTarget();
+
             if (
                     (pTarget == null)
                             || (mc.currentScreen != null)
@@ -61,15 +65,23 @@ public class KillAura extends Module {
                 rotate(mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch);
                 return;
             }
-            target = pTarget;
-            this.leftClickExecute(mc.gameSettings.keyBindAttack.getKeyCode());
-            float[] i = Utils.Player.getTargetRotations(target, 0);
-            locked = false;
-            rotate(i[0], i[1]);
+
+            if (mc.thePlayer.getDistanceToEntity(pTarget) <= targetRange.getInput()) {
+                target = pTarget;
+                this.leftClickExecute(mc.gameSettings.keyBindAttack.getKeyCode());
+                float[] i = Utils.Player.getTargetRotations(target, 0);
+                locked = false;
+                rotate(i[0], i[1]);
+            } else {
+                target = null;
+                rotate(mc.thePlayer.rotationYaw, mc.thePlayer.rotationPitch);
+            }
+
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
     }
+
 
     @SubscribeEvent
     public void onUpdate(UpdateEvent e) {

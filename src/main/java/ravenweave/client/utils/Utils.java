@@ -693,6 +693,8 @@ public class Utils {
             return new Color(r, g, b).getRGB();
         }
 
+        public static int drawColor(int r, int g, int b){return new Color(r, g, b).getRGB();}
+
         public static int getColorBetween(int min, int max, int delay) {
             int c = (int) Math.abs((((System.currentTimeMillis() / 10) + delay) % (2 * (max - min))) - (max - min))
                     + min;
