@@ -64,7 +64,7 @@ public class ClickGui extends GuiScreen {
     	super.drawScreen(x, y, p);
     	mouseX = x; mouseY = y;
 
-        drawRect(0, 0, this.width, this.height, (int) (this.aR.getValueFloat(0.0F, 0.7F, 2) * 255.0F) << 24);
+//        drawRect(0, 0, this.width, this.height, (int) (this.aR.getValueFloat(0.0F, 0.7F, 2) * 255.0F) << 24);
 
         if (!ClickGuiModule.clean.isToggled()) {
             int quarterScreenHeight = this.height / 4;

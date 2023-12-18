@@ -13,6 +13,7 @@ import ravenweave.client.module.modules.client.FakeHud;
 import ravenweave.client.module.setting.Setting;
 import ravenweave.client.module.setting.impl.*;
 import ravenweave.client.utils.Utils;
+import ravenweave.client.utils.RenderUtils;
 import ravenweave.client.utils.font.FontUtil;
 
 import java.awt.*;
@@ -157,6 +158,7 @@ public class HUD extends Module {
                                 del -= 10;
                                 break;
                             case ASTOLFO:
+                                RenderUtils.drawBorderedRect(10, 10, 10, 10, 1, 0x000000);
                                 mc.fontRendererObj.drawString(m.getName(),
                                         (float) hudX + (textBoxWidth - mc.fontRendererObj.getStringWidth(m.getName())),
                                         (float) y, Utils.Client.astolfoColorsDraw(10, 14), dropShadow.isToggled());

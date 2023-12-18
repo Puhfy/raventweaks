@@ -17,6 +17,7 @@ import ravenweave.client.module.modules.other.MiddleClick;
 import ravenweave.client.module.modules.other.Spin;
 import ravenweave.client.module.modules.other.WaterBucket;
 import ravenweave.client.module.modules.player.*;
+import ravenweave.client.module.modules.puhfy.*;
 import ravenweave.client.module.modules.render.*;
 import ravenweave.client.module.modules.render.Trajectories;
 import ravenweave.client.module.modules.world.AntiBot;
@@ -112,6 +113,7 @@ public class ModuleManager {
         addModule(new Parkour());
         addModule(new BedPlates());
         addModule(new LongJump());
+        addModule(new Backtrack());
 
         initialized = true;
     }

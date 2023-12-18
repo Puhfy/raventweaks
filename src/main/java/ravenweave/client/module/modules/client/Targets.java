@@ -25,7 +25,7 @@ public class Targets extends Module {
 
     public DescriptionSetting description;
     private static TickSetting friends, teams, invis, bots, naked, debug;
-    private static SliderSetting fov, distance, lockDist,auraFov;
+    private static SliderSetting fov, distance, lockDist, auraFov;
     private static ComboSetting<SortMode> sortMode;
     public static EntityPlayer lockedTarget;
 
@@ -57,7 +57,7 @@ public class Targets extends Module {
 
     @Override
     public void guiButtonToggled(Setting b) {
-        if(b == sortMode) {
+        if (b == sortMode) {
             lockDist.hideComponent(sortMode.getMode() == SortMode.Lock);
         }
     }
@@ -75,7 +75,7 @@ public class Targets extends Module {
         List<EntityPlayer> en = Utils.Player.getClosePlayers(distance.getInput());
         if (en == null) return null;
         en.removeIf(Targets::isValidTarget);
-        if(debug.isToggled()) en.forEach(target -> Utils.Player.sendMessageToSelf(sortMode.getMode().sv.value(target) + " " ));
+        if (debug.isToggled()) en.forEach(target -> Utils.Player.sendMessageToSelf(sortMode.getMode().sv.value(target) + " "));
         return en.isEmpty() ? null : en.stream().min(Comparator.comparingDouble(target -> sortMode.getMode().sv.value(target))).get();
     }
 
@@ -119,7 +119,6 @@ public class Targets extends Module {
         return false;
     }
 
-
     public enum SortMode {
         Distance(player -> mc.thePlayer.getDistanceToEntity(player)),
         Hurttime(player -> (float) player.hurtTime),
@@ -137,5 +136,4 @@ public class Targets extends Module {
     private interface SortValue {
         Float value(EntityPlayer player);
     }
-
 }
