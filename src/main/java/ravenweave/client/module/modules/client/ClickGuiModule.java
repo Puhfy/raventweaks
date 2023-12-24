@@ -154,25 +154,25 @@ public class ClickGuiModule extends Module {
             in -> Utils.Client.rainbowDraw(2L, 10L) // categoryOutlineColor2
         ),
         Puhfy(
-                false,
+                true,
                 false,
                 false,
                 true,
                 in -> 0xFFFFFFFE, // categoryNameRGB
-                in -> 0x32000000, // settingBackgroundRGB
-                in -> 0x32000000, // categoryBackgroundRGB
-                in -> 0xFF189AFF, // enabledTopRGB
-                in -> 0xFF189AFF, // enabledBottomRGB
-                in -> 0xFF189AFF, // enabledTextRGB
+                in -> -15001318,
+                in -> -15001318,
+                in -> 0xA9A9A9, // enabledTopRGB
+                in -> 0xA9A9A9, // enabledBottomRGB
+                in -> 0xFFFFFFFE, // enabledTextRGB
                 in -> 0xFFFFFFFE, // disabledTopRGB
                 in -> 0xFFFFFFFE, // disabledBottomRGB
                 in -> 0xFFFFFFFE, // disabledTextRGB
-                in -> 0x32000000, // backgroundRGB
+                in -> -4342338, // backgroundRGB
                 true,
                 true,
                 true,
                 in -> 0xFFFFFFFE, // categoryNameRGB
-                in -> Utils.Client.drawColor(0, 0, 0), // categoryOutlineColor
+                in -> Utils.Client.drawColor(52, 52, 52), // categoryOutlineColor
                 in -> Utils.Client.drawColor(52, 52, 52) // categoryOutlineColor2
         ),
         PlusPlus(

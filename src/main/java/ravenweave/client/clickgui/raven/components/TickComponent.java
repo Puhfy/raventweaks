@@ -36,8 +36,8 @@ public class TickComponent extends SettingComponent {
         float offSet = (percent * buttonWidth)/3;
         int fh = (Raven.mc.fontRendererObj.FONT_HEIGHT/2) + 1;
 
-        RenderUtils.drawBorderedRoundedRect(x, y + fh, x + buttonWidth, y + height, height/2, 2, ClickGuiModule.getBoarderColour(), 0xFF000000);
-        RenderUtils.drawBorderedRoundedRect(x + offSet, y + fh, x + ((buttonWidth/3)*2) + offSet, y + height, height/2, 2, ClickGuiModule.getBoarderColour(), colour);
+        RenderUtils.drawBorderedRoundedRect(x, y + fh, x + buttonWidth, y + height, 2, 0, ClickGuiModule.getBoarderColour(), 0xFF000000);
+        RenderUtils.drawBorderedRoundedRect(x + offSet, y + fh, x + ((buttonWidth/3)*2) + offSet, y + height, 2, 0, ClickGuiModule.getBoarderColour(), colour);
         GL11.glPushMatrix();
         GL11.glScaled(0.5D, 0.5D, 0.5D);
         Minecraft.getMinecraft().fontRendererObj.drawString(

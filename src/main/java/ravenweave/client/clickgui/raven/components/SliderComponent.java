@@ -44,8 +44,8 @@ public class SliderComponent extends SettingComponent {
         int percentWidth = (int) (width * ((setting.getInput() - setting.getMin())/(setting.getMax() - setting.getMin())));
         int boxY = y + (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT/2) + 1;
         int boxHeight = height - (boxY - y);
-        RenderUtils.drawBorderedRoundedRect(x, boxY , x + width, (boxY + boxHeight) , 7, 2, ClickGuiModule.getBoarderColour(), 0x20FFFFFF);
-        RenderUtils.drawBorderedRoundedRect(x, boxY , x + percentWidth, (boxY + boxHeight), percentWidth > 7 ? 7 : percentWidth, 2, 0xFFA020F0, 0x90FFFFFF);
+        RenderUtils.drawBorderedRoundedRect(x, boxY , x + width, (boxY + boxHeight) , 2, 2, ClickGuiModule.getBoarderColour(), 0x20FFFFFF);
+        RenderUtils.drawBorderedRoundedRect(x, boxY , x + percentWidth, (boxY + boxHeight), 2, 2, 0xFFA020F0, 0x90FFFFFF);
     }
 
     @Override

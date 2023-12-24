@@ -9,8 +9,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
+import net.weavemc.loader.api.event.EventBus;
 import net.weavemc.loader.api.event.SubscribeEvent;
 import org.lwjgl.input.Mouse;
+import ravenweave.client.event.LookEvent;
 import ravenweave.client.event.UpdateEvent;
 import ravenweave.client.Raven;
 import ravenweave.client.module.Module;
@@ -25,7 +27,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class AimAssist extends Module {
     public static DoubleSliderSetting speed;
-    public static TickSetting clickAim, weaponOnly, breakBlocks, blatantMode;
+    public static TickSetting clickAim, weaponOnly, breakBlocks, blatantMode, silent;
     @Getter
     public static ArrayList<Entity> friends = new ArrayList<>();
 
@@ -37,6 +39,8 @@ public class AimAssist extends Module {
         this.registerSetting(breakBlocks = new TickSetting("Break blocks", true));
         this.registerSetting(weaponOnly = new TickSetting("Weapon only", false));
         this.registerSetting(blatantMode = new TickSetting("Blatant Mode", false));
+        this.registerSetting(silent= new TickSetting("Silent", false));
+
     }
 
     @SubscribeEvent
@@ -51,6 +55,18 @@ public class AimAssist extends Module {
                 if (bl != Blocks.air && !(bl instanceof BlockLiquid)) return;
             }
         }
+
+        if (silent.isToggled()) {
+            float desiredYaw = 60;
+            float desiredPitch =  60;
+
+            // Create a LookEvent with the desired rotation
+            LookEvent lookEvent = new LookEvent(desiredPitch, desiredYaw);
+
+            // Fire the LookEvent
+            EventBus.callEvent(lookEvent);
+        }
+
 
         if (weaponOnly.isToggled() && !Utils.Player.isPlayerHoldingWeapon()) return;
         Module autoClicker = Raven.moduleManager.getModuleByClazz(LeftClicker.class);

@@ -215,7 +215,7 @@ public class Module {
     }
 
     public enum ModuleCategory {
-        category(true, null, "Raven B++"),
+        category(true, null, "Puff Client"),
         combat(false, category, "Combat"),
         movement(false, category, "Movement"),
         player(false, category, "Player"),
@@ -226,7 +226,7 @@ public class Module {
         client(false, category, "Client"),
         hotkey(false, category, "Hotkey"),
         config(false, client, "Config"),
-        puhfy(false, category, "Raven Tweaks");
+        puhfy(false, category, "Test");
 
         private final boolean defaultShown;
         private final ModuleCategory topCategory;

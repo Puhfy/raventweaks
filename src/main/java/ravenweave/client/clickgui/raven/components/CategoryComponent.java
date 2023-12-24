@@ -118,11 +118,27 @@ public class CategoryComponent extends Component {
             bottomY = y - (int) (Math.cos(Math.toRadians(ntheta)) * height);
         }
 
+        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+
+        // Save the current color
+        int oldColor = GL11.glGetInteger(GL11.GL_CURRENT_COLOR);
+
+        // Set the new color for the shadow
+        GL11.glColor4f(0.0f, 0.0f, 0.0f, 0.5f); // Black color with 50% opacity
+
+        // Draw the shadow at an offset position
+        Gui.drawRect(x + 2, y + 2, x2 + 2, y2 + 2, 0xFFFFFF);
+
+        // Disable blending after drawing the shadow
+        GL11.glDisable(GL11.GL_BLEND);
+
         // background
         GL11.glEnable(GL11.GL_SCISSOR_TEST);
         RenderUtils.glScissor(x - 1, y, x2 + 1, y2 + 1);
         int bgColor = openComponent != null ? ClickGuiModule.getCategoryBackgroundRGB() : ClickGuiModule.getSettingBackgroundRGB();
         if (!ClickGuiModule.isRoundedToggled()) Gui.drawRect(x, y, x2, y2, bgColor);
+        if (ClickGuiModule.preset.getMode() == ClickGuiModule.Preset.Puhfy) { RenderUtils.drawRoundedRect(x, y, x2, y2, 6, bgColor); }
         else RenderUtils.drawRoundedRect(x, y, x2, y2, 12, bgColor);
 
         // drawing modules
@@ -138,6 +154,7 @@ public class CategoryComponent extends Component {
                     yOffset += module.getHeight();
                 }
             }
+
 
         // boarder
         if (ClickGuiModule.isBoarderToggled()) {
@@ -176,10 +193,9 @@ public class CategoryComponent extends Component {
         else mc.fontRendererObj.drawString(categoryName.getName(), (float) (x + 2), (float) (y + 4), new Color(255, 255, 255).getRGB(), true);
 
         // +/- bit
-        int red = (int) (tPercent * 255);
-        int green = 255 - red;
-        final int colour = new Color(red, green, 0).getRGB();
-        mc.fontRendererObj.drawString(categoryOpened ? "-" : "+", x + marginX, y + marginY, colour, false);
+        String arrow = categoryOpened ? "-" : "+";
+        mc.fontRendererObj.drawString(arrow, x + marginX, y + marginY, ClickGuiModule.getCategoryOutlineColor1(), false);
+
 
         GL11.glDisable(GL11.GL_SCISSOR_TEST);
         GL11.glPopMatrix();

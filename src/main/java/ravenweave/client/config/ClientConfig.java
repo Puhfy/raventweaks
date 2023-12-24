@@ -52,7 +52,6 @@ public class ClientConfig {
             loadClickGuiCoords(config.get("clickgui").getAsJsonObject().get("catPos").getAsJsonObject());
             Raven.configManager.loadConfigByName(config.get("currentconfig").getAsString());
             loadHudCoords(config.get("hud").getAsJsonObject());
-            loadTerminalCoords(config.get("clickgui").getAsJsonObject());
             loadModules(config.get("modules").getAsJsonObject());
         } catch (final Exception e) {
             e.printStackTrace();
@@ -63,13 +62,6 @@ public class ClientConfig {
     private JsonObject getClickGuiAsJson() {
         final JsonObject data = new JsonObject();
         data.add("catPos", getClickGuiPosAsJson());
-        data.addProperty("terminalX", Raven.clickGui.terminal.getX());
-        data.addProperty("terminalY", Raven.clickGui.terminal.getY());
-        data.addProperty("width", Raven.clickGui.terminal.getWidth());
-        data.addProperty("height", Raven.clickGui.terminal.getHeight());
-        data.addProperty("hidden", Raven.clickGui.terminal.hidden); // lmao what cant u just check if the module is
-                                                                    // tuned on
-        data.addProperty("opened", Raven.clickGui.terminal.opened);
         return data;
     }
 
@@ -143,12 +135,6 @@ public class ClientConfig {
                 module.resetToDefaults();
     }
 
-    private void loadTerminalCoords(JsonObject data) {
-        Raven.clickGui.terminal.setLocation(data.get("terminalX").getAsInt(), data.get("terminalY").getAsInt());
-        Raven.clickGui.terminal.setSize(data.get("width").getAsInt(), data.get("height").getAsInt());
-        Raven.clickGui.terminal.opened = data.get("opened").getAsBoolean();
-        Raven.clickGui.terminal.hidden = data.get("hidden").getAsBoolean();
-    }
 
     public void saveConfig() {
         if (applyingConfig)

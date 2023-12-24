@@ -23,6 +23,9 @@ public class PacketEvent extends CancellableEvent {
         public Receive(Packet<?> packet, boolean outgoing) {
             super(packet, false);
         }
-    }
 
+        public void freezeIncomingPackets(boolean freeze) {
+            this.setCancelled(freeze);
+        }
+    }
 }

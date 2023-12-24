@@ -30,15 +30,15 @@ public class Blink extends Module {
 
     private final ArrayList<Packet<?>> outboundPackets = new ArrayList<>(), inboundPackets = new ArrayList<>();
     public static EntityOtherPlayerMP fakePlayer;
-    
+
     @SubscribeEvent
-    public void onPacket(PacketEvent e) {
+    public void onPacket(PacketEvent e) throws InterruptedException {
         if (!e.isOutgoing() && (mode.getMode() == modes.BOTH || mode.getMode() == modes.INBOUND)) {
+            Thread.sleep(40);
             inboundPackets.add(e.getPacket());
-            e.setCancelled(true);
         } else if (e.isOutgoing() && (mode.getMode() == modes.BOTH || mode.getMode() == modes.OUTBOUND)) {
+            Thread.sleep(40);
             outboundPackets.add(e.getPacket());
-            e.setCancelled(true);
         }
     }
     
